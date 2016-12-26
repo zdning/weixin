@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html ng-app="MyApp">
+	<head>
+		<meta charset="utf-8" />
+		<title>测试文档</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />   
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />   
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />   
+		<meta name="apple-mobile-web-app-capable" content="yes" />   
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />   
+		<meta name="format-detection" content="telephone=no" />   
+		<link rel="stylesheet" type="text/css" href="css/mui.css"/>
+		<style type="text/css">
+			body{
+				background: url(img/bg.jpg)center no-repeat;
+				background-size:cover;
+				height:100%;
+				overflow: hidden;
+			}
+			.mui-icon-locked,.mui-icon-person{
+				font-size: 20px;
+			    position: absolute;
+			    z-index: 1;
+			    top: 10px;
+			    left: 0;
+			    width: 50px;
+			    text-align: center;
+			}
+			form{
+				width: 85%;
+				margin: 0 auto;
+				padding: 10px;
+				margin: 0 auto;
+			}
+			.header{
+				height:240px;
+			}
+			.footer{
+				height:280px;
+			}
+			.count{
+				position: relative;
+			}
+			.count>input{
+				padding-left: 50px;
+			}
+			button{
+				width: 100%;
+				height: 38px;
+				font-size: 20px!important;
+			}
+			#header{
+				border-radius: 50%;
+				background: url(img/head.jpg)center no-repeat;
+				background-size: contain;
+				margin: 50px auto 0;
+				height:150px;
+				width: 150px;
+		</style>
+	</head>
+	<body>		
+		<div class="header">
+			<div class="mui-col-sm-4" id="header">
+				<!--圆形头像显示区-->
+			</div>
+		</div>
+		<!--账号密码登录区-->
+		<div class="body">
+			<div class="mui-col-sm-10 mui-page-content" style="margin:0 auto ;">
+				<form action="" method="post">					
+					<div class="count">
+						<span class="mui-icon mui-icon-person"></span>
+						<input type="text" class="mui-input-clear" placeholder="please input username" id="username"/>
+					</div>
+					<div class="count">
+						<span class="mui-icon mui-icon-locked"></span>
+						<input type="password" class="mui-input-password" placeholder="please input password" id="password"/>
+					</div>
+					<div class="count">
+						<button type="button" class="mui-btn mui-btn-primary mui-btn-outlined mui-block" id="login">Login</button>
+					</div>
+				</form>
+			</div>
+		</div>
+		
+		<!--页脚-->
+		<div class="footer"></div>
+		<script type="text/javascript" src="js/mui.js"></script>
+		<script type="text/javascript">
+			mui(".body").on('tap','button',function(){
+				var username = mui("#username")[0].value;
+				var pwd = mui("#password")[0].value;
+				if(username != "admin"){
+					mui.alert("用户名不存在！","Warning","back");
+				}else if(pwd != "000"){
+					mui.alert("data error","Warning","back");
+				}else{
+					mui.alert("登陆成功!","Waiting","loading...");
+					window.location.href="menu.html";
+				}
+				console.log("username=" + username + "&password=" + pwd);
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />   
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />   
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />   
+		<meta name="apple-mobile-web-app-capable" content="yes" />   
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />   
+		<meta name="format-detection" content="telephone=no" /> 
+		<link rel="stylesheet" type="text/css" href="css/mui.css"/>
+		<title>班级全部人员名单</title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+		<style type="text/css">
+			body{
+				background: url(img/bg.jpg) center no-repeat;
+				background-size: cover;
+				color:#000;
+			}
+			.wrap{
+				background-color: rgba(255,255,255,.5);
+				padding: 40px 0 20px 0;
+				position: relative;
+			}
+			.container{
+				margin: 0 20px;
+				border: 1px solid #eee;
+				border-radius: 5px;
+			}
+			tbody>tr>td{
+				border-top: none!important;
+			}
+			#back{
+				font-size: 4.5rem;
+				color: #fff;
+				position: absolute;
+				left: 5px;
+				top:0px;
+			}
+		</style>
+	</head>
+	<body ng-controller='listController'>
+		<div class='wrap'>
+			<div class="mui-icon mui-icon-undo" id='back'></div>	
+			<div class='container'>
+				<table class='table' style="margin:10px 0;">
+					<tr ng-repeat="x in student">
+						<td ng-bind='x.name'></td>
+						<td ng-bind='x.class'></td>
+						<td ng-bind='x.number'></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/angular.js"></script>
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/bootstrap.js"></script>
+		<script type="text/javascript">
+			var myApp = angular.module("myApp",[]);
+			myApp.controller("listController",function($scope,$http){
+				$http.post("store/studentList.json")
+				.success(function(data){
+					$scope.student = data;
+				})
+				.error(function(){
+					alert("数据获取失败，请联网查看！");
+				});
+			})
+
+			$('#back').click(function(){
+				window.location.href="menu.html";
+			});
+		</script>
+	</body>
+</html>

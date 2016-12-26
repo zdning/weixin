@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title> 
+    <style type="text/css">
+    	html,body{
+    		height:100%;
+    		border:none;
+    		margin:0;
+    		padding:0;
+    		position: relative;
+    	}	
+    	body>div{
+    		height:20%;
+    		font-size: 20px;
+    		color:#303083;
+    		text-align: center;
+    		line-height: 10%;
+    		position: relative;
+    	}
+    	.lession{
+    		background-color: #ADBEFF;
+    	}
+    	.history{
+    		background-color: #CF9FFF;
+    	}
+    	.code{
+    		background-color: #FFADEF;
+    	}
+    	.time{
+    		background-color: #FFD1D1;
+    	}
+    	.count{
+    		background-color: #FFFFB7;
+    	}
+    	.container{
+    		position: absolute;
+    		width: 300px;
+    		height:20px;
+    		left: 50%;
+    		margin-left: -150px;
+    		top: 50%;
+    		margin-top: -10px;
+    		font-size:50px;
+    	}
+
+    </style>
+</head>
+<body> 
+	<div class='lession' data-kind="lession">
+		<div class='container'>
+			今日课程信息
+		</div>		
+	</div>
+	<div class='history' data-kind="history">
+		<div class='container'>
+			历史出勤记录
+		</div>
+	</div>
+	<div class='code' data-kind="code">
+		<div class='container'>
+			二维码生成
+		</div>
+	</div>
+	<div class='time' data-kind="time">
+		<div class='container'>
+			当前时间
+		</div>
+	</div>
+	<div class='count' data-kind="count">
+		<div class='container'>
+			学生列表
+		</div>
+	</div>
+	<script src="js/jquery.js"></script>
+	<script src="js/mui.js"></script>
+    <script>		
+		var body = $('body');
+		body.on('click',function(e){
+			var kind = e.target.getAttribute('data-kind');
+			//识别并跳转到相应页面
+			switch(kind){
+				case 'lession':{
+					// window.location.href="lession.html";
+					mui.openWindow({
+					    url: 'lession.html', 
+					    show:{
+					      autoShow:true
+					    }
+					  });
+					break;
+					}
+				case 'history':{
+					window.location.href="history.html";
+					break;
+					}
+				case 'code':{
+					window.location.href="code.html";
+					break;
+					}
+				case 'time':{
+					window.location.href="time.html";
+					break;
+					}
+				case 'count':{
+					 window.location.href="count.html";
+					break;
+				}
+			}
+		})		
+    </script>
+</body>
+</html>
